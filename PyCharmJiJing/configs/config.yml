@@ -1,0 +1,19 @@
+data:
+  sequence_length: 20
+  batch_size: 32
+  train_split: 0.8
+  
+model:
+  input_dim: 10
+  hidden_dim: 64
+  num_layers: 2
+  learning_rate: 0.001
+  epochs: 100
+  
+training:
+  early_stopping_patience: 5
+  checkpoint_dir: "models/checkpoints"
+  
+monitoring:
+  log_interval: 100
+  metrics_port: 8000 

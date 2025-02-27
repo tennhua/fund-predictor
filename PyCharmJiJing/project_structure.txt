@@ -1,0 +1,12 @@
+fund_prediction/
+├── src/
+│   ├── data/
+│   │   ├── collectors/
+│   │   └── preprocessors/
+│   ├── models/
+│   ├── api/
+│   └── monitoring/
+├── tests/
+├── docs/
+├── configs/
+└── docker/ 

@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  api:
+    build: 
+      context: .
+      dockerfile: docker/api.Dockerfile
+    ports:
+      - "8000:8000"
+    depends_on:
+      - redis
+      - postgres
+    
+  training:
+    build:
+      context: .
+      dockerfile: docker/training.Dockerfile
+    volumes:
+      - ./models:/app/models
+      
+  postgres:
+    image: postgres:13
+    environment:
+      POSTGRES_DB: fund_prediction
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      
+  prometheus:
+    image: prom/prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./configs/prometheus.yml:/etc/prometheus/prometheus.yml
+      
+  grafana:
+    image: grafana/grafana
+    ports:
+      - "3000:3000" 
